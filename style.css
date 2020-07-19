@@ -35,16 +35,14 @@ a:hover {
 #main-container {
   display: grid;
   width: 650px;
-  border: 2px solid #eee;
   margin: auto;
-  margin-top: 4rem;
   justify-content: center;
 }
 
 #header {
-  margin-bottom: 2rem;
   text-align: center;
   font-weight: bolder;
+  margin-bottom: 1rem;
 }
 
 .border-shape-container {
@@ -52,4 +50,83 @@ a:hover {
   height: 375px;
   border: 2px dashed #555;
   background: #333;
+}
+
+
+.border-shape {
+  background-image: linear-gradient(to bottom right, #850df5, #4badee);
+  height: 100%;
+  border-radius: 100% 0% 100% 0% / 0% 100% 0% 100%;
+}
+
+.border-square {
+  height: 15px;
+  width: 15px;
+  background: #fff;
+  border: 2px solid black;
+}
+
+.border-square:active,
+.border-square:hover {
+  cursor: pointer;
+  background: #333;
+  border: 4px solid #fff;
+}
+
+#square-1 {
+  position: relative;
+  right: 0.5rem;
+  bottom: 0.5rem;
+}
+
+#square-2 {
+  position: relative;
+  left: 22.8rem;
+  bottom: 1.45rem
+}
+
+#square-3 {
+  position: relative;
+  left: 22.8rem;
+  top: 20.9rem;
+}
+
+#square-4 {
+  position: relative;
+  right: 0.5rem;
+  top: 19.9rem;
+}
+
+.label-container {
+  display: grid;
+  margin: auto;
+  width: 375px;
+  margin-top: 1rem;
+}
+
+#border-input-label {
+  font-size: 2rem;
+}
+
+#border-input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0.5rem 0;
+  background: #fff;
+  color: #333;
+}
+
+.copy-btn {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  background: #fff;
+  color: #333;
+}
+
+.copy-btn:hover {
+  cursor: pointer;
+  background: #333;
+  color: #fff;
 }

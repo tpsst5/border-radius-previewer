@@ -13,19 +13,30 @@
   <nav id="navbar">
     <a href="https://github.com/tpsst5/border-radius-previewer" class="links"><i class="fab fa-github fa-2x"></i> View
       on
-      Github</a>
+      GitHub</a>
   </nav>
   <main id="main-container">
     <h1 id="header">CUSTOM BORDER RADIUS</h1>
     <div class="container">
       <div class="border-shape-container">
-        <div class="border-shape"></div>
+        <div class="border-shape">
+          <div class="border-square" id="square-1"></div>
+          <div class="border-square" id="square-2"></div>
+          <div class="border-square" id="square-3"></div>
+          <div class="border-square" id="square-4"></div>
+        </div>
       </div>
     </div>
-    border-radius: <input type="text" placeholder="100% 0% 100% 0% / 0% 100% 0% 100% "><button
-      class="copy-btn">COPY</button>
   </main>
 
+  <div class="label-container">
+    <label for="border-input" id="border-input-label">border-radius: </label>
+    <span id="input-span"><input name="border-input" id="border-input" type="text"
+        placeholder="100% 0% 100% 0% / 0% 100% 0% 100%" disabled></span>
+    <button class="copy-btn">COPY</button>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 
 </html>

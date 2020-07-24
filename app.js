@@ -10,6 +10,7 @@ const sidePixelLength = 494 - 123;
 // Set initial border radius in array
 let borderRadius = ['0%', '100%', '0%', '100%', '/', '100%', '0%', '100%', '0%'];
 
+
 // Function for the left selector
 leftSelector.onmousedown = function (event) {
   const sidePixelLength = 494 - 123;
@@ -89,6 +90,7 @@ leftSelector.onmousedown = function (event) {
     window.onmouseup = null;
   };
 };
+
 
 // Function for right selector
 rightSelector.onmousedown = function (event) {
@@ -171,24 +173,17 @@ rightSelector.onmousedown = function (event) {
 };
 
 
-
-
-
-// ISSUE WITH TOP SELECTOR WHEN SCREEN IS ZOOMED OUT/IN
-
 // Function for top selector
 topSelector.onmousedown = function (event) {
   const sidePixelLength = 649 - 276;
+  const pixlesOnEachSide = (window.innerWidth - 375) / 2;
   let percentMoved = 0;
   let borderRadiusString = null;
   // Set position of top selector and set border radius information
-  function moveAt(pageX) { //(pageX, pageX) {
-    console.log(pageX);
-    // topSelector.style.top = pageX - topSelector.offsetWidth / 2 + 'px';
-    if (pageX >= 183 && pageX <= 555) {
-      topSelector.style.left = pageX - 191 + 'px'; //pageX - topSelector.offsetHeight / 2 + 'px';
-      percentMoved = ((pageX - 183) / sidePixelLength).toFixed(2);
-
+  function moveAt(pageX) {
+    if (pageX >= pixlesOnEachSide && pageX <= pixlesOnEachSide + 375) {
+      topSelector.style.left = pageX - pixlesOnEachSide - 10 + 'px';
+      percentMoved = ((pageX - pixlesOnEachSide) / sidePixelLength).toFixed(2);
       if (percentMoved !== '0.00' && percentMoved !== '1.00') {
         borderRadius[0] = `${percentMoved.substring(2)}%`;
         borderRadius[1] = `${(100 - Number(percentMoved.substring(2)))}%`;
@@ -217,7 +212,7 @@ topSelector.onmousedown = function (event) {
         border.style.borderRadius = borderRadiusString;
         inputText.value = borderRadiusString;
       }
-    } else if (pageX < 183) {
+    } else if (pageX < pixlesOnEachSide) {
       borderRadius[0] = '0%';
       borderRadius[1] = '100%';
       borderRadiusString = String(borderRadius
@@ -226,7 +221,7 @@ topSelector.onmousedown = function (event) {
         .split());
       border.style.borderRadius = borderRadiusString;
       inputText.value = borderRadiusString;
-    } else if (pageX > 555) {
+    } else if (pageX > pixlesOnEachSide + 375) {
       borderRadius[0] = '100%';
       borderRadius[1] = '0%';
       borderRadiusString = String(borderRadius
@@ -251,6 +246,86 @@ topSelector.onmousedown = function (event) {
   document.addEventListener('mousemove', onMouseMove);
 
   // Drop the topSelector, remove unneeded handlers
+  window.onmouseup = function () {
+    document.removeEventListener('mousemove', onMouseMove);
+    window.onmouseup = null;
+  };
+};
+
+
+// Function for bottom selector
+bottomSelector.onmousedown = function (event) {
+  const sidePixelLength = 649 - 276;
+  const pixlesOnEachSide = (window.innerWidth - 375) / 2;
+  let percentMoved = 0;
+  let borderRadiusString = null;
+  // Set position of bottom selector and set border radius information
+  function moveAt(pageX) {
+    if (pageX >= pixlesOnEachSide && pageX <= pixlesOnEachSide + 375) {
+      bottomSelector.style.left = pageX - pixlesOnEachSide - 10 + 'px';
+      percentMoved = ((pageX - pixlesOnEachSide) / sidePixelLength).toFixed(2);
+      if (percentMoved !== '0.00' && percentMoved !== '1.00') {
+        borderRadius[3] = `${percentMoved.substring(2)}%`;
+        borderRadius[2] = `${(100 - Number(percentMoved.substring(2)))}%`;
+        borderRadiusString = String(borderRadius
+          .join(',')
+          .replace(/,/g, ' ')
+          .split());
+        border.style.borderRadius = borderRadiusString;
+        inputText.value = borderRadiusString;
+      } else if (percentMoved === '0.00') {
+        borderRadius[3] = '0%';
+        borderRadius[2] = '100%';
+        borderRadiusString = String(borderRadius
+          .join(',')
+          .replace(/,/g, ' ')
+          .split());
+        border.style.borderRadius = borderRadiusString;
+        inputText.value = borderRadiusString;
+      } else if (percentMoved === '1.00') {
+        borderRadius[3] = '100%';
+        borderRadius[2] = '0%';
+        borderRadiusString = String(borderRadius
+          .join(',')
+          .replace(/,/g, ' ')
+          .split());
+        border.style.borderRadius = borderRadiusString;
+        inputText.value = borderRadiusString;
+      }
+    } else if (pageX < pixlesOnEachSide) {
+      borderRadius[3] = '0%';
+      borderRadius[2] = '100%';
+      borderRadiusString = String(borderRadius
+        .join(',')
+        .replace(/,/g, ' ')
+        .split());
+      border.style.borderRadius = borderRadiusString;
+      inputText.value = borderRadiusString;
+    } else if (pageX > pixlesOnEachSide + 375) {
+      borderRadius[3] = '100%';
+      borderRadius[2] = '0%';
+      borderRadiusString = String(borderRadius
+        .join(',')
+        .replace(/,/g, ' ')
+        .split());
+      border.style.borderRadius = borderRadiusString;
+      inputText.value = borderRadiusString;
+    }
+  }
+
+  // Move the bottom selector
+  moveAt(event.pageX); //(event.pageX, event.pageX);
+
+  function onMouseMove(event) {
+    event = event || window.event;
+    pauseEvent(event);
+    moveAt(event.pageX); //(event.pageX, event.pageX);
+  }
+
+  // Move the bottomSelector on mousemove
+  document.addEventListener('mousemove', onMouseMove);
+
+  // Drop the bottomSelector, remove unneeded handlers
   window.onmouseup = function () {
     document.removeEventListener('mousemove', onMouseMove);
     window.onmouseup = null;

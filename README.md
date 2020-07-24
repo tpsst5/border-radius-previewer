@@ -1,7 +1,7 @@
 # Border Radius Previewer
 
 ## General Information:
-This is a Vanilla JS tool to visualize the effect of adjusting the border-radius setting in CSS and copy the desired setting to the clipboard.
+Tool built with Vanilla JS to visualize the effect of adjusting the border-radius setting in CSS. User can adjust the border-radius then copy the setting to the clipboard.
 
 ## Screenshot:
 ![Border radius screenshot](border.png)

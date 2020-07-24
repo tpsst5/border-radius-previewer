@@ -1,4 +1,4 @@
-// Event listener vars
+// Event listener variables
 const topSelector = document.getElementById('square-1');
 const rightSelector = document.getElementById('square-2');
 const bottomSelector = document.getElementById('square-3');
@@ -8,7 +8,7 @@ const inputText = document.getElementById('border-input');
 const copyBtn = document.getElementById('copy-btn');
 const successAlert = document.getElementById('success');
 const successBorderText = document.getElementById('border-copy');
-// Side lengths in pixels
+// Variable used to calculate selector positioning
 const sidePixelLength = 494 - 123;
 // Set initial border radius in array
 let borderRadius = ['0%', '100%', '0%', '100%', '/', '100%', '0%', '100%', '0%'];

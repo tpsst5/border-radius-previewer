@@ -117,7 +117,7 @@ a:hover {
   color: #333;
 }
 
-.copy-btn {
+#copy-btn {
   font-size: 1.6rem;
   font-weight: bold;
   padding: 0.4rem;
@@ -125,8 +125,38 @@ a:hover {
   color: #333;
 }
 
-.copy-btn:hover {
+#copy-btn:hover {
   cursor: pointer;
   background: #333;
   color: #fff;
+}
+
+@keyframes alert {
+  0% {
+    top: 0%;
+  }
+
+  100% {
+    top: 30%;
+  }
+}
+
+/* Alert box for copy to clipboard */
+#success {
+  position: absolute;
+  width: 350px;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 3px solid #333;
+  color: green;
+  font-size: 2rem;
+  padding: 1.5rem;
+  animation-name: alert;
+  animation-duration: 1s;
+  border-radius: 5px;
+  display: none;
+  /* display: block; */
 }

@@ -5,6 +5,9 @@ const bottomSelector = document.getElementById('square-3');
 const leftSelector = document.getElementById('square-4');
 const border = document.getElementById('border');
 const inputText = document.getElementById('border-input');
+const copyBtn = document.getElementById('copy-btn');
+const successAlert = document.getElementById('success');
+const successBorderText = document.getElementById('border-copy');
 // Side lengths in pixels
 const sidePixelLength = 494 - 123;
 // Set initial border radius in array
@@ -331,6 +334,22 @@ bottomSelector.onmousedown = function (event) {
     window.onmouseup = null;
   };
 };
+
+
+copyBtn.onclick = function () {
+  navigator.clipboard.writeText(inputText.value || inputText.placeholder).then(function () {
+    // Border-radius copied successfully
+    successBorderText.textContent = inputText.value || inputText.placeholder;
+    successAlert.style.display = 'block';
+  }, function () {
+    // Promise rejected
+    console.error('Unable to copy to the clipboard');
+  });
+  // Remove success alert after 3 seconds
+  window.setTimeout(function () {
+    successAlert.style.display = 'none';
+  }, 3000)
+}
 
 
 // Prevent window issues from click and dragging events
